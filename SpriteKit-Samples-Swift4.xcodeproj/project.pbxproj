@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		11DA46D42151FAC10033D321 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA46D32151FAC10033D321 /* AppDelegate.swift */; };
-		11DA46D62151FAC10033D321 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA46D52151FAC10033D321 /* ViewController.swift */; };
 		11DA46D92151FAC10033D321 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11DA46D72151FAC10033D321 /* Main.storyboard */; };
 		11DA46DB2151FAC20033D321 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11DA46DA2151FAC20033D321 /* Assets.xcassets */; };
 		11DA46DE2151FAC20033D321 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11DA46DC2151FAC20033D321 /* LaunchScreen.storyboard */; };
+		11DA46E62151FFE80033D321 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA46E52151FFE80033D321 /* GameScene.swift */; };
+		11DA46E82152001F0033D321 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA46E72152001F0033D321 /* MainViewController.swift */; };
+		11DA46EA215200510033D321 /* SpriteKitObjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA46E9215200510033D321 /* SpriteKitObjectsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		11DA46D02151FAC10033D321 /* SpriteKit-Samples-Swift4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpriteKit-Samples-Swift4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11DA46D32151FAC10033D321 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		11DA46D52151FAC10033D321 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		11DA46D82151FAC10033D321 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11DA46DA2151FAC20033D321 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11DA46DD2151FAC20033D321 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11DA46DF2151FAC20033D321 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11DA46E52151FFE80033D321 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		11DA46E72152001F0033D321 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		11DA46E9215200510033D321 /* SpriteKitObjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitObjectsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +59,10 @@
 			isa = PBXGroup;
 			children = (
 				11DA46D32151FAC10033D321 /* AppDelegate.swift */,
-				11DA46D52151FAC10033D321 /* ViewController.swift */,
 				11DA46D72151FAC10033D321 /* Main.storyboard */,
+				11DA46E52151FFE80033D321 /* GameScene.swift */,
+				11DA46E72152001F0033D321 /* MainViewController.swift */,
+				11DA46E9215200510033D321 /* SpriteKitObjectsViewController.swift */,
 				11DA46DA2151FAC20033D321 /* Assets.xcassets */,
 				11DA46DC2151FAC20033D321 /* LaunchScreen.storyboard */,
 				11DA46DF2151FAC20033D321 /* Info.plist */,
@@ -135,8 +141,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11DA46D62151FAC10033D321 /* ViewController.swift in Sources */,
+				11DA46E82152001F0033D321 /* MainViewController.swift in Sources */,
+				11DA46E62151FFE80033D321 /* GameScene.swift in Sources */,
 				11DA46D42151FAC10033D321 /* AppDelegate.swift in Sources */,
+				11DA46EA215200510033D321 /* SpriteKitObjectsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

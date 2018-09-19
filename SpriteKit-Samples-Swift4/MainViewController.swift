@@ -9,7 +9,9 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
+    var selectNumber = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +23,35 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func Action11(_ sender: Any) {
+        self.selectNumber = 11
+        self.performSegue(withIdentifier: "goObjects", sender: nil)
     }
-    */
+    @IBAction func Action12(_ sender: Any) {
+        self.selectNumber = 12
+        self.performSegue(withIdentifier: "goObjects", sender: nil)
+    }
+    @IBAction func Action13(_ sender: Any) {
+        self.selectNumber = 13
+        self.performSegue(withIdentifier: "goObjects", sender: nil)
+    }
+    @IBAction func Action14(_ sender: Any) {
+    }
+    @IBAction func Action15(_ sender: Any) {
+    }
+    @IBAction func Action16(_ sender: Any) {
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goObjects" {
+            let SpriteKitObjectsViewController = segue.destination as! SpriteKitObjectsViewController
+            SpriteKitObjectsViewController.selectNumber = self.selectNumber
+        } else {
+        print("fatal error")
+        }
+    }
+    
+    
 
 }

@@ -7,29 +7,32 @@
 //
 
 import UIKit
+import SpriteKit
 
 class SpriteKitObjectsViewController: UIViewController {
-
+    
+    let fromAppDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    var selectNumber :Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let skView = SKView(frame: CGRect(x:0, y:0, width:fromAppDelegate.width, height:fromAppDelegate.height))
+        view.addSubview(skView)
+        print(selectNumber)
+        let skScene = GameScene(size: skView.frame.size,selectNumber:self.selectNumber)
+        skScene.scaleMode = .resizeFill
+        skView.ignoresSiblingOrder = true
+        skView.presentScene(skScene)
+       
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+       
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
 
 }
