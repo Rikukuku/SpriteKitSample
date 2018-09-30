@@ -14,9 +14,10 @@ class SpriteKitObjectsViewController: UIViewController {
     let fromAppDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     var selectNumber :Int = 0
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         let skView = SKView(frame: CGRect(x:0, y:0, width:fromAppDelegate.width, height:fromAppDelegate.height))
         view.addSubview(skView)
         print(selectNumber)
@@ -31,8 +32,4 @@ class SpriteKitObjectsViewController: UIViewController {
         super.didReceiveMemoryWarning()
        
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.dismiss(animated: true, completion: nil)
-    }
-
 }
