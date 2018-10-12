@@ -26,6 +26,15 @@ class GameScene: SKScene {
     let image27_2 = SKSpriteNode(imageNamed: "sample2.jpeg")
     var shapes = [SKShapeNode](repeating: SKShapeNode(), count: 45)
     let circle34 = SKShapeNode(circleOfRadius: 50)
+    let circle35 = SKShapeNode(circleOfRadius: 50)
+    let soccer36 = SKLabelNode(text: "⚽️")
+    let soccer37 = SKShapeNode(circleOfRadius: 50)
+    let soccer38 = SKShapeNode(circleOfRadius: 20)
+    let rect39 = SKShapeNode(rectOf: CGSize(width: 15, height: 50))
+    let circle310 = SKShapeNode(circleOfRadius: 40)
+    let circle311 = SKShapeNode(circleOfRadius: 40)
+    let circle312 = SKShapeNode(circleOfRadius: 40)
+    var slider :UISlider!
     
     init(size:CGSize, selectNumber:Int) {
         super.init(size: size)
@@ -335,7 +344,174 @@ class GameScene: SKScene {
             circle2.physicsBody?.isDynamic = false
             circle2.physicsBody?.affectedByGravity = false
             addChild(circle2)
+        case 35:
+            let bg = makebackgroudShape(color: .blue, width: self.width, height: self.height, position_x: self.width/2, position_y: self.height/2)
+            addChild(bg)
+            physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: -0.2)
+            circle35.position = CGPoint(x:self.width/2, y: self.height - 50)
+            circle35.fillColor = .yellow
+            circle35.strokeColor = .yellow
+            circle35.physicsBody = SKPhysicsBody(circleOfRadius: circle34.frame.width/2)
+            circle35.physicsBody?.isDynamic = true
             
+            addChild(circle35)
+            let circle2 = makeCircle(radius: 50, position_x: self.width/2, position_y: self.height/3, color: .red)
+            circle2.strokeColor = .red
+            circle2.physicsBody = SKPhysicsBody(circleOfRadius: circle2.frame.width/2)
+            circle2.physicsBody?.isDynamic = true
+            circle2.physicsBody?.affectedByGravity = false
+            circle2.physicsBody?.restitution = 0.75
+            addChild(circle2)
+        case 36:
+            let bg = makebackgroudShape(color: .green, width: self.width, height: self.height, position_x: self.width/2, position_y: self.height/2)
+            addChild(bg)
+            
+            physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: -0.2)
+            soccer36.fontSize = 50
+            soccer36.position = CGPoint(x: frame.midX, y: CGFloat(self.height - 100))
+            soccer36.physicsBody = SKPhysicsBody(circleOfRadius: soccer36.frame.width / 2)
+            soccer36.physicsBody?.isDynamic = true
+            soccer36.physicsBody?.restitution = 0.8
+            addChild(soccer36)
+            
+            let goal = SKLabelNode(text: "🥅")
+            goal.fontSize = 150
+            goal.position = CGPoint(x: frame.midX, y: CGFloat(self.height - 120))
+            goal.physicsBody = SKPhysicsBody(circleOfRadius: 1)
+            goal.physicsBody?.isDynamic = false
+            addChild(goal)
+        case 37:
+            let bg = makebackgroudShape(color: .blue, width: self.width, height: self.height, position_x: self.width/2, position_y: self.height/2)
+            addChild(bg)
+            
+            physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
+            soccer37.position = CGPoint(x: self.width / 2 , y: self.height - 50)
+            soccer37.fillColor = .white
+            soccer37.strokeColor = .white
+            soccer37.fillTexture = SKTexture(imageNamed: "socer.png")
+            soccer37.physicsBody = SKPhysicsBody(circleOfRadius: soccer37.frame.width / 2)
+            soccer37.physicsBody?.isDynamic = true
+            addChild(soccer37)
+            
+            let circle2 = makeCircle(radius: 50, position_x: self.width/2, position_y: self.height/3, color: .red)
+            circle2.strokeColor = .red
+            circle2.physicsBody = SKPhysicsBody(circleOfRadius: circle2.frame.width/2)
+            circle2.physicsBody?.isDynamic = true
+            circle2.physicsBody?.restitution = 0.75
+            addChild(circle2)
+        case 38:
+            let bg = makebackgroudShape(color: .blue, width: self.width, height: self.height, position_x: self.width/2, position_y: self.height/2)
+            addChild(bg)
+            
+            physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: -0.5)
+            soccer38.position = CGPoint(x: self.width / 2, y: self.height - 50)
+            soccer38.fillColor = .white
+            soccer38.fillTexture = SKTexture(imageNamed: "socer.png" )
+            soccer38.physicsBody = SKPhysicsBody(circleOfRadius: soccer38.frame.width / 2)
+            soccer38.physicsBody?.isDynamic = true
+            soccer38.physicsBody?.restitution = 0.75
+            addChild(soccer38)
+            
+            for _ in 0..<15 {
+                let pinball = SKShapeNode(circleOfRadius: 7)
+                pinball.position = CGPoint(x: Double(50 + arc4random_uniform(UInt32(self.width - 100))),
+                                           y: Double(50 + arc4random_uniform(UInt32(self.width - 100))))
+                pinball.fillColor = .white
+                pinball.strokeColor = .white
+                
+                pinball.physicsBody = SKPhysicsBody(circleOfRadius: pinball.frame.width / 2)
+                pinball.physicsBody?.isDynamic = false
+                pinball.physicsBody?.restitution = 1.0
+                addChild(pinball)
+                
+            }
+        case 39:
+            let bg = makebackgroudShape(color: .yellow, width: self.width, height: self.height, position_x: self.width/2, position_y: self.height/2)
+            addChild(bg)
+            physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: -0.5)
+            let rect2 = SKShapeNode(rectOf: CGSize(width: 50, height: 15))
+            rect2.fillColor = .black
+            rect2.strokeColor = .black
+            rect39.addChild(rect2)
+            rect39.position = CGPoint(x: self.width / 2 , y: self.height - 50)
+            rect39.fillColor = .black
+            rect39.strokeColor = .black
+            rect39.physicsBody = SKPhysicsBody(bodies: [SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 15)),
+                                                        SKPhysicsBody(rectangleOf: CGSize(width: 15, height: 50))])
+            rect39.physicsBody?.restitution = 0.5
+            addChild(rect39)
+        case 310:
+            let bg = makebackgroudShape(color: .black, width: self.width, height: self.height, position_x: self.width/2, position_y: self.height/2)
+            addChild(bg)
+            physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: -0.3)
+            circle310.position = CGPoint(x:self.width / 2, y: self.height / 2)
+            circle310.fillColor = .red
+            circle310.strokeColor = .red
+            circle310.physicsBody = SKPhysicsBody(circleOfRadius: circle310.frame.width / 2)
+            circle310.physicsBody?.restitution = 1.0
+            addChild(circle310)
+            for _ in 0..<50 {
+                let pinball = SKShapeNode(circleOfRadius: 20)
+                pinball.position = CGPoint(x: Double(arc4random_uniform(UInt32(self.width))),
+                                           y: Double(arc4random_uniform(UInt32(self.height))))
+                pinball.fillColor = .yellow
+                pinball.strokeColor = .yellow
+                
+                pinball.physicsBody = SKPhysicsBody(circleOfRadius: pinball.frame.width / 2)
+                pinball.physicsBody?.isDynamic = true
+                pinball.physicsBody?.restitution = 1.0
+                addChild(pinball)
+            }
+        case 311:
+            let bg = makebackgroudShape(color: .black, width: self.width, height: self.height, position_x: self.width/2, position_y: self.height/2)
+            addChild(bg)
+            physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: -0.3)
+            circle311.position = CGPoint(x:self.width / 2 ,y: self.height / 2)
+            circle311.fillColor = .black
+            circle311.strokeColor = .black
+            circle311.physicsBody = SKPhysicsBody(circleOfRadius: circle311.frame.width / 2)
+            circle311.physicsBody?.isDynamic = true
+            circle311.physicsBody?.restitution = 1.0
+            addChild(circle311)
+            
+            var points = [CGPoint(x:0,y:0),CGPoint(x:100,y:200),CGPoint(x:200,y:150),CGPoint(x:300,y:170),CGPoint(x:self.width,y:0)]
+            let spline = SKShapeNode(splinePoints: &points, count: points.count)
+            spline.strokeColor = .red
+            spline.lineWidth = 6.0
+            spline.physicsBody = SKPhysicsBody(edgeChainFrom: spline.path!)
+            spline.physicsBody?.isDynamic = false
+            addChild(spline)
+            for _ in 0..<10 {
+                addChild(makeBall(radius: 15))
+            }
+        case 312:
+            let bg = makebackgroudShape(color: .white, width: self.width, height: self.height, position_x: self.width/2, position_y: self.height/2)
+            addChild(bg)
+            physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: -0.3)
+            
+            circle312.position = CGPoint(x:self.width / 2 ,y: self.height / 2)
+            circle312.fillColor = .red
+            circle312.strokeColor = .red
+            circle312.physicsBody = SKPhysicsBody(circleOfRadius: circle312.frame.width / 2)
+            circle312.physicsBody?.isDynamic = true
+            circle312.physicsBody?.restitution = 1.0
+            addChild(circle312)
+            
+            slider = UISlider(frame: CGRect(x: 50, y: self.height - 40, width: 300, height: 24))
+            slider.minimumValue = 0
+            slider.maximumValue = 100
+            slider.value = 1
+            slider.isContinuous = false
+            view.addSubview(slider)
+        
          default:
             print("fatal error")
         
@@ -375,7 +551,43 @@ class GameScene: SKScene {
         case 34:
             circle34.physicsBody?.applyImpulse(CGVector(dx: Double(arc4random_uniform(200)) - 100.0,
                                                         dy: Double(arc4random_uniform(200)) - 100.0 ))
-
+        case 35:
+            circle35.physicsBody?.applyImpulse(CGVector(dx: Double(arc4random_uniform(200)) - 100.0,
+                                                        dy: Double(arc4random_uniform(200)) - 100.0))
+        case 36:
+            soccer36.physicsBody?.applyImpulse(CGVector(dx: Double(arc4random_uniform(400)) - 200.0,
+                                                        dy: Double(arc4random_uniform(400)) - 200.0))
+        case 37:
+            let touch = touches.first!
+            let t = touch.location(in: self)
+            let ad = t.x - soccer37.position.x
+            let op = t.y - soccer37.position.y
+            soccer37.physicsBody?.applyImpulse(CGVector(dx: ad/5.0, dy: op/5.0))
+        case 38:
+            soccer38.physicsBody?.applyImpulse(CGVector(dx: 60.0, dy: 60.0
+            ))
+        case 39:
+            let touch = touches.first!
+            let pinhall = SKShapeNode(circleOfRadius: 5)
+            pinhall.position = touch.location(in: self)
+            pinhall.fillColor = .red
+            pinhall.strokeColor = .red
+            pinhall.physicsBody = SKPhysicsBody(circleOfRadius: pinhall.frame.width / 2)
+            pinhall.physicsBody?.isDynamic = false
+            pinhall.physicsBody?.restitution = 1.0
+            addChild(pinhall)
+        case 310:
+            circle310.physicsBody?.applyImpulse(CGVector(dx: Double(arc4random_uniform(400)) - 200.0,
+                                                         dy: Double(arc4random_uniform(400)) - 200.0))
+        case 311:
+            addChild(makeBall(radius: 15))
+            circle311.physicsBody?.applyImpulse(CGVector(dx: Double(arc4random_uniform(400)) - 200.0, dy: Double(arc4random_uniform(400)) - 200.0))
+        case 312:
+            let ball = makeBall(radius: 10)
+            ball.physicsBody?.linearDamping = CGFloat(slider.value / 10)
+            addChild(ball)
+            circle312.physicsBody?.applyImpulse(CGVector(dx: Double(arc4random_uniform(400)) - 200.0, dy: Double(arc4random_uniform(400)) - 200.0))
+            
             default:
             print("未実装")
         }
@@ -400,6 +612,8 @@ class GameScene: SKScene {
         case 27:
             let touch = touches.first!
             image27_2.position = touch.location(in: self)
+        case 39:
+            rect39.physicsBody?.applyImpulse(CGVector(dx: 200.0, dy: 200.0))
         default:
             print("未実装")
         }
@@ -412,10 +626,23 @@ class GameScene: SKScene {
         circle.fillColor = color
         return circle
     }
+    
     func makebackgroudShape(color:UIColor, width:CGFloat,height:CGFloat, position_x:CGFloat, position_y:CGFloat) -> SKSpriteNode{
         let backgroundShape = SKSpriteNode(color: color, size: CGSize(width: width, height: height))
         backgroundShape.position = CGPoint(x:position_x, y:position_y)
         return backgroundShape
+    }
+    func makeBall(radius: CGFloat = 20) -> SKShapeNode{
+        let ball = SKShapeNode(circleOfRadius: radius)
+        ball.position = CGPoint(x: Double(arc4random_uniform(UInt32(self.width))),
+                                y:200.0 + Double(arc4random_uniform(UInt32(self.height - 200))))
+        ball.fillColor = UIColor(hue: CGFloat(arc4random_uniform(1000)) / CGFloat(1000), saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        ball.strokeColor = ball.fillColor
+        ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.frame.width / 2)
+        
+        ball.physicsBody?.restitution = 1.0
+        return ball
+        
     }
     
 }

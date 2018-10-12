@@ -123,6 +123,26 @@ class MainViewController: UIViewController {
         self.selectNumber = 38
         self.performSegue(withIdentifier: "goObjects", sender: nil)
     }
+    @IBAction func Action39(_ sender: Any) {
+        self.selectNumber = 39
+        self.performSegue(withIdentifier: "goObjects", sender: nil)
+    }
+    @IBAction func Action310(_ sender: Any) {
+        self.selectNumber = 310
+        self.performSegue(withIdentifier: "goObjects", sender: nil)
+    }
+    @IBAction func Action311(_ sender: Any) {
+        self.selectNumber = 311
+        self.performSegue(withIdentifier: "goObjects", sender: nil)
+    }
+    @IBAction func Action312(_ sender: Any) {
+        self.selectNumber = 312
+        self.performSegue(withIdentifier: "goObjects", sender: nil)
+    }
+    @IBAction func Action313(_ sender: Any) {
+        self.selectNumber = 313
+        self.performSegue(withIdentifier: "goObjects", sender: nil)
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
