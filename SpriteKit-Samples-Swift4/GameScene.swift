@@ -511,6 +511,23 @@ class GameScene: SKScene {
             slider.value = 1
             slider.isContinuous = false
             view.addSubview(slider)
+        case 313:
+            let bg = makebackgroudShape(color: .black, width: self.width, height: self.height, position_x: self.width/2, position_y: self.height/2)
+            addChild(bg)
+            physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: -0.3)
+            
+            let xrosRect = SKShapeNode(rect: CGRect(x: self.width / 2, y:0, width: 80, height: 30))
+            xrosRect.fillColor = .green
+            xrosRect.strokeColor = .green
+            addChild(xrosRect)
+            let cg = SKShapeNode(rect: CGRect(x: self.width/2 - 15, y: 0, width: 30, height: 50))
+            cg.fillColor = .green
+            cg.strokeColor = .green
+            addChild(cg)
+            for _ in 0..<10 {
+                addChild(makeBall(radius: 20))
+            }
         
          default:
             print("fatal error")
@@ -587,7 +604,10 @@ class GameScene: SKScene {
             ball.physicsBody?.linearDamping = CGFloat(slider.value / 10)
             addChild(ball)
             circle312.physicsBody?.applyImpulse(CGVector(dx: Double(arc4random_uniform(400)) - 200.0, dy: Double(arc4random_uniform(400)) - 200.0))
-            
+        case 313:
+            let gun = makeBomb(radius: 10)
+            addChild(gun)
+            gun.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 100.0))
             default:
             print("未実装")
         }
@@ -639,10 +659,20 @@ class GameScene: SKScene {
         ball.fillColor = UIColor(hue: CGFloat(arc4random_uniform(1000)) / CGFloat(1000), saturation: 1.0, brightness: 1.0, alpha: 1.0)
         ball.strokeColor = ball.fillColor
         ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.frame.width / 2)
-        
+        ball.physicsBody?.isDynamic = true
         ball.physicsBody?.restitution = 1.0
         return ball
         
+    }
+    func makeBomb(radius: CGFloat) -> SKShapeNode{
+        let bomb = SKShapeNode(circleOfRadius: radius)
+        bomb.position = CGPoint(x: self.width / 2, y: 20)
+        bomb.fillColor = .red
+        bomb.strokeColor = .red
+        bomb.physicsBody = SKPhysicsBody(circleOfRadius: bomb.frame.width / 2)
+        bomb.physicsBody?.linearDamping = 10.0
+        bomb.physicsBody?.restitution = 1.0
+        return bomb
     }
     
 }
