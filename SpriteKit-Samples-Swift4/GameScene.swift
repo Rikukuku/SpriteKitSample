@@ -35,6 +35,7 @@ class GameScene: SKScene {
     let circle311 = SKShapeNode(circleOfRadius: 40)
     let circle312 = SKShapeNode(circleOfRadius: 40)
     var slider :UISlider!
+    let circle314 = SKShapeNode(circleOfRadius: 20)
     
     init(size:CGSize, selectNumber:Int) {
         super.init(size: size)
@@ -528,7 +529,26 @@ class GameScene: SKScene {
             for _ in 0..<10 {
                 addChild(makeBall(radius: 20))
             }
-        
+        case 314:
+            let bg = makebackgroudShape(color: .green, width: self.width, height: self.height, position_x: self.width/2, position_y: self.height/2)
+            addChild(bg)
+            physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+            physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
+            circle314.position = CGPoint(x: frame.midX, y: 20)
+            circle314.fillColor = .white
+            circle314.strokeColor = .green
+            circle314.fillTexture = SKTexture(imageNamed: "socer.png")
+            circle314.physicsBody = SKPhysicsBody(circleOfRadius: circle314.frame.width / 2)
+            circle314.physicsBody?.restitution = 1.0
+            addChild(circle314)
+            
+            for i in 0..<6 {
+                for j in 0..<i {
+                    let br = makeBall(radius: 20)
+                    br.position = CGPoint(x: frame.midX + CGFloat(j*35 - i * 15), y: frame.midY + CGFloat(i*35))
+                    addChild(br)
+                }
+            }
          default:
             print("fatal error")
         
@@ -608,7 +628,13 @@ class GameScene: SKScene {
             let gun = makeBomb(radius: 10)
             addChild(gun)
             gun.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 100.0))
-            default:
+        case 314:
+            let touch = touches.first!
+            let t = touch.location(in: self)
+            let ad = t.x - circle314.position.x
+            let op = t.y - circle314.position.y
+            circle314.physicsBody?.applyImpulse(CGVector(dx: ad / 5.0, dy: op / 5.0))
+        default:
             print("未実装")
         }
 
@@ -657,7 +683,7 @@ class GameScene: SKScene {
         ball.position = CGPoint(x: Double(arc4random_uniform(UInt32(self.width))),
                                 y:200.0 + Double(arc4random_uniform(UInt32(self.height - 200))))
         ball.fillColor = UIColor(hue: CGFloat(arc4random_uniform(1000)) / CGFloat(1000), saturation: 1.0, brightness: 1.0, alpha: 1.0)
-        ball.strokeColor = ball.fillColor
+        ball.strokeColor = .white
         ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.frame.width / 2)
         ball.physicsBody?.isDynamic = true
         ball.physicsBody?.restitution = 1.0
